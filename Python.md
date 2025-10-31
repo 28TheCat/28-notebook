@@ -107,5 +107,49 @@ print(type(name))
 
 * `'3.14'` 不能直接转成 `int`，需要先转 `float`；
 * `bool()` 转换时，**空值、0、None、空容器** 都是 `False`。
+Python 函数与全局变量笔记
+一、函数的定义与注释规范
+def test(a, b):
+    """
+    这个函数用于两数相加
+    :param a: 相加的第一个数字
+    :param b: 相加的第二个数字
+    :return: 两数之和
+    """
+    return a + b
 
+# 调用函数
+result = test(1, 2)
+print(result)  # 输出：3
+
+
+✅ 说明：
+
+def 用于定义函数
+
+""" ... """ 是函数的文档字符串（docstring），用于写说明
+
+:param 描述参数含义
+
+:return 描述返回值
+
+💡 建议：
+编写函数时最好都写上文档字符串，方便他人或自己日后阅读。
+
+二、函数内修改全局变量
+xx = 5  # 定义全局变量
+
+def change_value():
+    global xx  # 声明使用全局变量
+    xx = 10    # 修改全局变量的值
+
+change_value()
+print(xx)  # 输出：10
+
+
+✅ 说明：
+
+使用 global xx 可以在函数内修改外部定义的变量
+
+如果不写 global，在函数里赋值会默认创建一个新的局部变量
 
